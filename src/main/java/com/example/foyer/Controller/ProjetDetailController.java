@@ -6,11 +6,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "Gestion DTO")
+@Tag(name = "Gestion DTO Manuelle")
 @RestController
 @RequestMapping("/DTO")
 @RequiredArgsConstructor
-@Tag(name = "Gestion DTO")
 public class ProjetDetailController {
 
     private final DTOService dtoService;
