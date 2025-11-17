@@ -2,33 +2,50 @@ package com.example.foyer.Services;
 
 import com.example.foyer.DTO.ProjetDetailDTO;
 import com.example.foyer.Entities.ProjetDetail;
+import com.example.foyer.Mappers.ProjetDetailMapper;
 import com.example.foyer.Repositories.ProjetDetailRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
 
-@Service
-public class DTOService {
+//@Service
+//public class DTOService {
 
-    @Autowired
-    private ProjetDetailRepository projetDetailRepository; // ✅ injection automatique
+ //   @Autowired
+ //   private ProjetDetailRepository projetDetailRepository; // ✅ injection automatique
 
-    public ProjetDetailDTO getDetailsProjet(Long id) {
-        ProjetDetail detail = projetDetailRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Détails du projet non trouvés"));
+  //  public ProjetDetailDTO getDetailsProjet(Long id) {
+  //      ProjetDetail detail = projetDetailRepository.findById(id)
+  //              .orElseThrow(() -> new RuntimeException("Détails du projet non trouvés"));
 
-        return convertToDto(detail);
-    }
+  //      return convertToDto(detail);
+  //  }
 
-    private ProjetDetailDTO convertToDto(ProjetDetail detail) {
-        ProjetDetailDTO dto = new ProjetDetailDTO();
-        dto.setDescription(detail.getDescription());
-        dto.setTechnologie(detail.getTechnologie());
+  //  private ProjetDetailDTO convertToDto(ProjetDetail detail) {
+   //     ProjetDetailDTO dto = new ProjetDetailDTO();
+   //     dto.setDescription(detail.getDescription());
+   //     dto.setTechnologie(detail.getTechnologie());
+//
+   //     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+   //     dto.setDateDebut(detail.getDateDebut().format(formatter));
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        dto.setDateDebut(detail.getDateDebut().format(formatter));
+   //     return dto;
+   // }
+//}//
+   @Service
+   @RequiredArgsConstructor
+   public class DTOService {
 
-        return dto;
-    }
-}
+       private final ProjetDetailRepository projetDetailRepository;
+       private final ProjetDetailMapper projetDetailMapper;
+
+       public ProjetDetailDTO getDetailsProjet(Long id) {
+           ProjetDetail detail = projetDetailRepository.findById(id)
+                   .orElseThrow(() -> new RuntimeException("Détails du projet non trouvés"));
+
+           // Conversion automatique via MapStruct
+           return projetDetailMapper.toDTO(detail);
+       }
+   }

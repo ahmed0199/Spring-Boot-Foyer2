@@ -3,16 +3,17 @@ package com.example.foyer.Controller;
 import com.example.foyer.DTO.ProjetDetailDTO;
 import com.example.foyer.Services.DTOService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Gestion DTO")
 @RestController
 @RequestMapping("/DTO")
+@RequiredArgsConstructor
+@Tag(name = "Gestion DTO")
 public class ProjetDetailController {
 
-    @Autowired
-    private DTOService dtoService; // ✅ injection automatique
+    private final DTOService dtoService;
 
     @GetMapping("/{id}/details")
     public ProjetDetailDTO getDetails(@PathVariable Long id) {
