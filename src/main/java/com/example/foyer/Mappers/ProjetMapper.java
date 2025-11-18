@@ -11,4 +11,7 @@ public interface ProjetMapper {
     @Mapping(target = "libelleProjet", source = "nom") // Renommage
     ProjetDTO toDto(Projet projet);
     // MapStruct génère automatiquement l'implementation !
+
+    @Mapping(target = "nom", source = "libelleProjet")
+    Projet toEntity(ProjetDTO projetDTO);
 }

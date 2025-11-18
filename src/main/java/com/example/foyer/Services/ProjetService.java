@@ -18,4 +18,15 @@ public class ProjetService {
         Projet projet = projetRepository.findById(id).orElseThrow(() -> new RuntimeException("Projet non trouvé"));
         return mapper.toDto(projet); // Conversion en 1 ligne
     }
+
+    public ProjetDTO addProjet(ProjetDTO projetDTO) {
+        // Conversion DTO -> Entité
+        Projet projet = mapper.toEntity(projetDTO);
+
+        // Sauvegarde en base
+        Projet savedProjet = projetRepository.save(projet);
+
+        // Conversion Entité -> DTO pour la réponse
+        return mapper.toDto(savedProjet);
+    }
 }

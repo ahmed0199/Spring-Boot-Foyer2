@@ -18,4 +18,8 @@ public class ProjetController {
     public ProjetDTO getProjetById(@PathVariable long id) {
         return projetService.getProjet(id);
     }
+    @PostMapping
+    public ProjetDTO addProjet(@RequestBody ProjetDTO projetDTO) {
+        return projetService.addProjet(projetDTO);
+    }
 }
