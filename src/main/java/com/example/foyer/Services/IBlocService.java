@@ -11,4 +11,6 @@ public interface IBlocService {
     Bloc updateBloc (Bloc bloc);
     List<Bloc> allBlocs();
     Bloc getBlocById(Long idBloc);
+    Bloc affecterChambresABloc(List<Long> numChambre, long idBloc);
+
 }

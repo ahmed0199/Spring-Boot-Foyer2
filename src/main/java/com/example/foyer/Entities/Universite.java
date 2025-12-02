@@ -10,7 +10,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 
 public class Universite {
     @Id
@@ -20,8 +19,7 @@ public class Universite {
     private String nomUniversite;
     private String adresse;
 
-    @OneToMany(mappedBy = "universite", cascade = CascadeType.ALL)
-    private List<Foyer> foyers;
-
+    @OneToOne(mappedBy = "universite", cascade = CascadeType.ALL)
+    private Foyer foyer; // Changé en 'foyer' au singulier, type Foyer
 
 }

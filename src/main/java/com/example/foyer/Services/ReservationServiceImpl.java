@@ -45,8 +45,8 @@ public class ReservationServiceImpl implements IReservationService {
     // Placeholder pour la logique métier complexe (à implémenter)
     @Override
     public Reservation ajouterReservationEtAffecterAChambre(Long idChambre, Reservation reservation) {
-        // Logique pour trouver la chambre, vérifier la capacité, l'affecter, puis sauvegarder la réservation.
-        // REQUIERT L'INJECTION DE CHAMBREREPOSITORY
+
         return null; // À implémenter
     }
+
 }

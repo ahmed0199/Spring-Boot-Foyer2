@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Getter
 @Setter
 public class Foyer {
@@ -19,7 +18,7 @@ public class Foyer {
     private String nomFoyer;
     private Long capaciteFoyer;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "universite_id")
     private Universite universite;
 

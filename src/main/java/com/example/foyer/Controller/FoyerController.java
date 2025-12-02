@@ -42,4 +42,12 @@ public class FoyerController {
     public void supprimer(@PathVariable Long idFoyer) {
         foyerService.deleteFoyer(idFoyer);
     }
+
+    @Operation(description = "Ajouter un foyer avec ses blocs et l'affecter à une université")
+    @PostMapping("/ajouter-avec-blocs-et-universite/{idUniversite}")
+    public Foyer ajouterFoyerEtAffecterAUniversite(
+            @RequestBody Foyer foyer,
+            @PathVariable long idUniversite) {
+        return foyerService.ajouterFoyerEtAffecterAUniversite(foyer, idUniversite);
+    }
 }

@@ -42,4 +42,16 @@ public class UniversiteController {
     public void supprimer(@PathVariable Long idUniversite) {
         universiteService.deleteUniversite(idUniversite);
     }
+
+    @PutMapping("/affecter-foyer/{idFoyer}/{nomUniversite}")
+    public Universite affecterFoyerAUniversite(
+            @PathVariable long idFoyer,
+            @PathVariable String nomUniversite) {
+        return universiteService.affecterFoyerAUniversite(idFoyer, nomUniversite);
+    }
+    @Operation(description = "Désaffecter le foyer d'une université")
+    @PutMapping("/desaffecter-foyer/{idUniversite}")
+    public Universite desaffecterFoyerAUniversite(@PathVariable long idUniversite) {
+        return universiteService.desaffecterFoyerAUniversite(idUniversite);
+    }
 }

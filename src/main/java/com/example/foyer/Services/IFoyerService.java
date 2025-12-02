@@ -11,4 +11,5 @@ public interface IFoyerService {
     Foyer updateFoyer (Foyer foyer);
     List<Foyer> allFoyers();
     Foyer getFoyerById(Long idFoyer);
+    Foyer ajouterFoyerEtAffecterAUniversite(Foyer foyer, long idUniversite);
 }

@@ -43,4 +43,12 @@ public class BlocController {
     public void supprimer(@PathVariable Long idBloc) {
         blocService.deleteBloc(idBloc);
     }
+
+    @Operation(description = "Affecter des chambres à un bloc")
+    @PutMapping("/affecter-chambres/{idBloc}")
+    public Bloc affecterChambresABloc(
+            @RequestBody List<Long> numChambre,
+            @PathVariable long idBloc) {
+        return blocService.affecterChambresABloc(numChambre, idBloc);
+    }
 }
